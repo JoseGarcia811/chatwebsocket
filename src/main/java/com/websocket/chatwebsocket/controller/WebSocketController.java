@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public class WebSocketController {
     @MessageMapping("/chat/{roomId}")
     @SendTo("/topic/{roomId}")
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "https://webchat.appasdn.site", maxAge = 3600)
     public ChatMessage chat(@DestinationVariable String roomId, ChatMessage message) {
         System.out.println(message);
         return new ChatMessage(message.getMessage(), message.getUser());
